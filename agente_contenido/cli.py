@@ -16,10 +16,10 @@ from .voz import VOZ_POR_DEFECTO
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(
         prog="agente-contenido",
-        description="Convierte una idea en un video corto vertical (720x1280) con guion de Claude y montaje en ffmpeg.",
+        description="Convierte una idea en un video corto vertical (720x1280) con guion de IA y montaje en ffmpeg.",
     )
     p.add_argument("idea", nargs="?", help="La idea del video, entre comillas.")
-    p.add_argument("--guion", type=Path, help="Usar un guion JSON ya escrito (no llama a Claude).")
+    p.add_argument("--guion", type=Path, help="Usar un guion JSON ya escrito (no llama a ninguna IA).")
     p.add_argument("--solo-guion", action="store_true", help="Solo escribir el guion e imprimirlo en JSON.")
     p.add_argument("--motor-guion", choices=["claude", "ollama"], default="claude",
                    help="Quién escribe el guion: Claude (API de pago) u Ollama (local y gratis).")

@@ -43,6 +43,11 @@ def _escapar(texto: str) -> str:
     return texto
 
 
+def _ruta_fuente(ruta: str) -> str:
+    """En Windows, ffmpeg necesita barras normales y ':' escapado en la ruta de la fuente."""
+    return ruta.replace("\\", "/").replace(":", "\\:")
+
+
 def _lineas(texto: str, ancho: int) -> list[str]:
     return textwrap.wrap(texto, width=ancho) or [" "]
 
@@ -55,7 +60,7 @@ def _capa_texto(lineas: list[str], fuente: str, tam: int, y_centro: int, color: 
     for i, linea in enumerate(lineas):
         extra = ":box=1:boxcolor=black@0.35:boxborderw=18" if caja else ""
         filtros.append(
-            f"drawtext=fontfile='{fuente}':text='{_escapar(linea)}':fontsize={tam}:fontcolor={color}"
+            f"drawtext=fontfile='{_ruta_fuente(fuente)}':text='{_escapar(linea)}':fontsize={tam}:fontcolor={color}"
             f":x=(w-text_w)/2:y={y0 + i * alto_linea}:borderw=3:bordercolor=black@0.6{extra}"
         )
     return filtros
@@ -76,7 +81,7 @@ def render_clip(indice: int, total: int, texto_pantalla: str, narracion: str, se
     )
     if marca:
         filtros.append(
-            f"drawtext=fontfile='{fuente}':text='{_escapar(marca)}':fontsize=28:fontcolor=white@0.8"
+            f"drawtext=fontfile='{_ruta_fuente(fuente)}':text='{_escapar(marca)}':fontsize=28:fontcolor=white@0.8"
             f":x=(w-text_w)/2:y=70"
         )
     fondo = (f"gradients=s={ANCHO}x{ALTO}:c0={c1}:c1={c2}:x0=0:y0=0:x1={ANCHO}:y1={ALTO}"
@@ -94,8 +99,8 @@ def unir(clips: list[Path], audios: list[Path], salida: Path, trabajo: Path) -> 
     """Concatena clips y audios y los combina en el MP4 final."""
     lista_v = trabajo / "clips.txt"
     lista_a = trabajo / "audios.txt"
-    lista_v.write_text("".join(f"file '{c.resolve()}'\n" for c in clips))
-    lista_a.write_text("".join(f"file '{a.resolve()}'\n" for a in audios))
+    lista_v.write_text("".join(f"file '{c.resolve().as_posix()}'\n" for c in clips), encoding="utf-8")
+    lista_a.write_text("".join(f"file '{a.resolve().as_posix()}'\n" for a in audios), encoding="utf-8")
     audio = trabajo / "narracion.wav"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0",
                     "-i", str(lista_a), "-c", "copy", str(audio)], check=True)

@@ -50,9 +50,10 @@ def producir(guion: Guion, carpeta: Path, motor_voz: str = "edge", voz_nombre: s
     salida = video.unir(clips, audios, carpeta / f"{nombre}.mp4", trabajo)
 
     guion_json = carpeta / f"{nombre}.guion.json"
-    guion_json.write_text(json.dumps(guion.a_dict(), ensure_ascii=False, indent=2))
+    guion_json.write_text(json.dumps(guion.a_dict(), ensure_ascii=False, indent=2), encoding="utf-8")
     descripcion = carpeta / f"{nombre}.descripcion.txt"
-    descripcion.write_text(f"{guion.titulo}\n\n{guion.gancho}\n\n{guion.cierre}\n\n{' '.join(guion.hashtags)}\n")
+    descripcion.write_text(f"{guion.titulo}\n\n{guion.gancho}\n\n{guion.cierre}\n\n{' '.join(guion.hashtags)}\n",
+                           encoding="utf-8")
     return Resultado(guion, salida, guion_json, descripcion, total_seg)
 
 
