@@ -1,0 +1,9 @@
+{
+  "name": "agente-contenido",
+  "version": "0.1.0",
+  "description": "Agente de contenido: convierte una idea en guion y en un video corto vertical (720x1280) con voz y textos, montado con ffmpeg.",
+  "author": { "name": "Angel" },
+  "repository": "https://github.com/agsanfer15-spec/agente-contenido",
+  "license": "MIT",
+  "keywords": ["video", "tiktok", "reels", "shorts", "guion", "ffmpeg", "español"]
+}

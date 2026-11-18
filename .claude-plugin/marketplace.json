@@ -1,0 +1,11 @@
+{
+  "name": "agente-contenido",
+  "owner": { "name": "Angel" },
+  "plugins": [
+    {
+      "name": "agente-contenido",
+      "source": "./",
+      "description": "Idea → guion → video corto vertical en español."
+    }
+  ]
+}

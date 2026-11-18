@@ -1,0 +1,28 @@
+{
+  "titulo": "3 hábitos para ahorrar sin darte cuenta",
+  "gancho": "¿Y si te digo que puedes ahorrar sin sentir que te privas de nada?",
+  "escenas": [
+    {
+      "narracion": "Hábito uno: págate primero. El día que cobras, aparta un diez por ciento antes de gastar nada.",
+      "texto_pantalla": "1. Págate primero",
+      "visual": "Persona moviendo dinero a una hucha en el móvil"
+    },
+    {
+      "narracion": "Hábito dos: la regla de las cuarenta y ocho horas. Si quieres algo que no necesitas, espera dos días antes de comprarlo.",
+      "texto_pantalla": "2. Espera 48 horas",
+      "visual": "Carrito de compra online con un reloj de arena"
+    },
+    {
+      "narracion": "Hábito tres: redondea tus compras. Cada vez que pagas, la diferencia hasta el siguiente euro va a tu ahorro.",
+      "texto_pantalla": "3. Redondea cada compra",
+      "visual": "Monedas cayendo en un frasco"
+    },
+    {
+      "narracion": "Hazlo durante un mes y mira tu cuenta. Los pequeños cambios suman más de lo que crees.",
+      "texto_pantalla": "Pruébalo 30 días",
+      "visual": "Calendario con días tachados"
+    }
+  ],
+  "cierre": "Guarda este video y sígueme para más trucos de dinero.",
+  "hashtags": ["#ahorro", "#finanzaspersonales", "#dinero", "#tips"]
+}
